@@ -10,6 +10,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+  bool _value1 = false;
+  bool _value2 = false;
+
+  void _onValue1Changed(bool value) {
+    setState(() {
+      _value1 = value;
+    });
+  }
+
+  void _onValue2Changed(bool value) {
+    setState(() {
+      _value2 = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +35,17 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Text('Switches Example'),
+              Switch(value: _value1, onChanged: _onValue1Changed),
+              SwitchListTile(
+                value: _value2,
+                onChanged: _onValue2Changed,
+                title: Text('Show notification'),
+                subtitle: Text('On / Off'),
+                activeColor: Colors.amber
+              )
+            ],
           ),
         ),
       ),
