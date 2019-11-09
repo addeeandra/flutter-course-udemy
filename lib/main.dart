@@ -10,6 +10,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+  String _valueText = '';
+  String _valueInput = '';
+
+  void _onInputChanged(String newValue) {
+    setState(() {
+      _valueInput = newValue;
+    });
+  }
+
+  void _onSubmitPressed() {
+    setState(() {
+      _valueText = _valueInput;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +35,25 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                    labelText: 'Name',
+                    hintText: 'Type your name',
+                    icon: Icon(Icons.people)),
+                autofocus: true,
+                autocorrect: false,
+                onChanged: _onInputChanged,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(_valueText),
+              ),
+              RaisedButton(
+                onPressed: _onSubmitPressed,
+                child: Text('Submit'),
+              )
+            ],
           ),
         ),
       ),
