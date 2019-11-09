@@ -10,6 +10,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+  String _value = 'Hello world!';
+
+  void _onPressed(String value) {
+    setState(() {
+      _value = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +28,13 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Text(_value),
+              RaisedButton(
+                onPressed: () => _onPressed('Halo Dunia!'),
+                child: Text('Press me!'),
+              )
+            ],
           ),
         ),
       ),
