@@ -10,6 +10,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+  String _value = 'Nothing yet.';
+
+  void _onClicked() {
+    setState(() {
+      _value = DateTime.now().toString();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +28,14 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Text(_value),
+              IconButton(
+                icon: Icon(Icons.timer),
+                onPressed: _onClicked,
+                tooltip: 'Click me!',
+              )
+            ],
           ),
         ),
       ),
