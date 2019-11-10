@@ -20,7 +20,41 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(32),
+                  child: Column(
+                    children: <Widget>[
+                      Text('Hello World'),
+                      Text('How are you?'),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(32),
+                  child: Column(
+                    children: <Widget>[
+                      Text('Hello World'),
+                      Text('How are you?'),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(32),
+                  child: Column(
+                    children: <Widget>[
+                      Text('Hello World'),
+                      Text('How are you?'),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       ),
