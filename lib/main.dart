@@ -10,6 +10,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+  TextEditingController _user = TextEditingController();
+  TextEditingController _pass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +23,35 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Text('Please Login'),
+              Row(
+                children: <Widget>[
+                  Text('Username : '),
+                  Expanded(
+                      child: TextField(
+                    controller: _user,
+                  ))
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Text('Password : '),
+                  Expanded(
+                      child: TextField(
+                    controller: _pass,
+                    obscureText: true,
+                  ))
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: RaisedButton(
+                  onPressed: () => print('Login ${_user.text}'),
+                  child: Text('Click me'),
+                ),
+              )
+            ],
           ),
         ),
       ),
