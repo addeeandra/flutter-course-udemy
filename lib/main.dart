@@ -20,7 +20,11 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Text('Images Demo'),
+              Expanded(child: Image.asset('images/flutter.png')),
+              Expanded(child: Image.network('http://voidrealms.com/images/smile.jpg'))
+            ],
           ),
         ),
       ),
