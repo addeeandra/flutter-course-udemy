@@ -10,6 +10,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+
+  double _value = 0.0;
+
+  void _onChanged(double value) => setState(() => _value = value);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +25,23 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32),
         child: Center(
           child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+            children: <Widget>[
+              Slider(value: _value, onChanged: _onChanged),
+              Container(
+                padding: EdgeInsets.all(32),
+                child: LinearProgressIndicator(
+                  value: _value,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(32),
+                child: CircularProgressIndicator(
+                  value: _value,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                ),
+              )
+            ],
           ),
         ),
       ),
