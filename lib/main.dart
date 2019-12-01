@@ -10,6 +10,47 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+
+  List<Step> _steps;
+  int _current;
+
+  @override
+  void initState() {
+    _current = 0;
+    _steps = <Step>[
+      new Step(title: new Text('Step 1'),
+          content: new Text('Do something'),
+          isActive: true),
+      new Step(title: new Text('Step 2'),
+          content: new Text('Do something'),
+          isActive: false),
+      new Step(title: new Text('Step 3'),
+          content: new Text('Do something'),
+          isActive: false)
+    ];
+    super.initState();
+  }
+
+  void _stepContinue() {
+    setState(() {
+      _current++;
+      if (_current >= _steps.length) _current = _steps.length - 1;
+    });
+  }
+
+  void _stepCancel() {
+    setState(() {
+      _current--;
+      if (_current < 0) _current = 0;
+    });
+  }
+
+  void _stepTap(int index) {
+    setState(() {
+      _current = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +60,13 @@ class _State extends State<MyApp> {
       body: Container(
         padding: EdgeInsets.all(32),
         child: Center(
-          child: Column(
-            children: <Widget>[Text('Add Widgets here')],
+          child: new Stepper(
+            steps: _steps,
+            type: StepperType.vertical,
+            currentStep: _current,
+            onStepCancel: _stepCancel,
+            onStepContinue: _stepContinue,
+            onStepTapped: _stepTap,
           ),
         ),
       ),
